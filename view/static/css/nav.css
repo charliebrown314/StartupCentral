@@ -1,0 +1,34 @@
+
+/* Dark Mode Standard*/
+nav {
+    background-color: darkgreen;
+    display: flex;
+    justify-content: flex-end;
+
+}
+
+.nav-topbar {
+    width: 100%;
+    height: 3rem;
+}
+
+.nav-button {
+    width: 6rem;
+    height: 100%;
+    border-left: 1px solid black;
+    line-height: 3rem;
+    text-align: center;
+    text-decoration: none;
+    color: #f8f8f2;
+}
+
+.nav-button:hover {
+    background-color: #025302;
+}
+
+#nav-home {
+    border-right: 1px solid black;
+    margin-right: auto;
+}
+
+/* Light Mode */

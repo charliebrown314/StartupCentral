@@ -1,0 +1,48 @@
+/* Background Options */
+/* Scroll Bar Options */
+/* Tile Options */
+/* Nav Bar Options */
+.single-row {
+  display: flex;
+  overflow: auto;
+}
+
+div.row-tile {
+  height: 8rem;
+  width: 33.3333333333%;
+  margin: 0.5rem 0.5rem;
+  flex-shrink: 0;
+}
+
+div.two-column {
+  display: flex;
+}
+div.two-column > div {
+  width: 50%;
+  flex-direction: column;
+  padding-left: 0.5rem;
+  border-left: 1px solid #f8f8f2;
+}
+div.two-column div.col-large {
+  width: 70%;
+}
+div.two-column div.col-small {
+  width: 30%;
+}
+
+div.col-tile {
+  height: 4rem;
+  width: 100%;
+  margin: 0.5rem 0.5rem;
+  flex-shrink: 0;
+}
+
+div.nameplate {
+  background-color: #025302;
+}
+
+div.recommendation {
+  background-color: #025302;
+}
+
+/*# sourceMappingURL=tiles.css.map */

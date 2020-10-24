@@ -5,15 +5,42 @@
     <title>Social Media Thingy - Home</title>
     <link rel="stylesheet" href="../static/css/nav.css">
     <link rel="stylesheet" href="../static/css/standard.css">
-    <link rel="script" href="../static/js/functions.js">
+    <link rel="stylesheet" href="../static/css/tiles.css">
+    <script src="../static/js/functions.js"></script>
 </head>
-<body>
+<body onload="setUp();">
 <nav class="nav nav-topbar">
-    <a href="homepage.html" id="nav-home">Home</a>
+    <a class="nav-selected" href="homepage.html" id="nav-home">Home</a>
+    <input type="text" placeholder="Search..." id="nav-search">
     <a href="projects.html" id="nav-projects">Projects</a>
+    <a href="messaging.html" id="nav-messaging">Messaging</a>
     <a href="profile.html" id="nav-profile">Profile</a>
     <a href="settings.html" id="nav-settings">Settings</a>
 </nav>
-<div id="content"></div>
+<div id="content">
+    <h1>Social Media Thingy</h1>
+    <div class="two-column" id="main">
+        <div class="col-large">
+            <h2>Generic Info</h2>
+        </div>
+        <div class="col-small" id="collaborators">
+            <h2>Collaborators</h2>
+            <div class="col-tile nameplate">Freddy Mercury<img src="" </div>
+            <div class="col-tile nameplate">Melon Usk</div>
+            <div class="col-tile nameplate">Bobby DropTables</div>
+        </div>
+    </div>
+    <h1>Recommended Projects</h1>
+    <div class="single-row" id="reccomendations">
+        <div class="row-tile recommendation">Synplicity</div>
+        <div class="row-tile recommendation">Johnny Syns</div>
+        <div class="row-tile recommendation">CSE116</div>
+        <div class="row-tile recommendation">Project</div>
+        <div class="row-tile recommendation">That</div>
+        <div class="row-tile recommendation">We'll</div>
+        <div class="row-tile recommendation">Never</div>
+        <div class="row-tile recommendation">Finish</div>
+    </div>
+</div>
 </body>
 </html>

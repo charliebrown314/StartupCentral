@@ -1,9 +1,14 @@
-@use 'global_vars';
+@use 'global_vars' as *;
 
 /* Dark Mode Standard */
 
-nav {
-  background-color: $nav-color-dark;
+@mixin nav-mode($light-mode: false) {
+  @if $light-mode {
+    background-color: $nav-color-light;
+  }
+  @else {
+    background-color: $nav-color-dark;
+  }
   display: flex;
   justify-content: flex-end;
   width: 100%;
@@ -11,17 +16,48 @@ nav {
   a {
     width: 6rem;
     height: 100%;
-    border-left: 1px solid $button-border-color-dark;
+    @if $light-mode {
+      border-left: 1px solid $button-border-color-light;
+    }
+    @else {
+      border-left: 1px solid $button-border-color-dark;
+    }
     line-height: 3rem;
     text-align: center;
     text-decoration: none;
     color: #f8f8f2;
   }
   a:hover {
-    background-color: $nav-hover-color-dark;
+    @if $light-mode {
+      background-color: $nav-hover-color-light;
+    }
+    @else {
+      background-color: $nav-hover-color-dark;
+    }
+  }
+  a.nav-selected {
+    background-color: inherit;
+    height: 110%;
   }
   #nav-home {
-    border-right: 1px solid $button-border-color-dark;
+
+    @if $light-mode {
+      border-left: 1px solid $button-border-color-light;
+    }
+    @else {
+      border-right: 1px solid $button-border-color-dark;
+    }
+
+  }
+  input {
     margin-right: auto;
   }
+}
+
+nav {
+  @include nav-mode($light-mode: false)
+}
+
+nav.light-mode {
+  @include nav-mode($light-mode: true)
 }

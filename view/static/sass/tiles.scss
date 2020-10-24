@@ -1,0 +1,45 @@
+@use 'global_vars' as *;
+
+.single-row {
+  display: flex;
+  overflow: auto;
+}
+
+
+div.row-tile {
+  height: $tile-height;
+  width: $tile-width;
+  margin: .5rem .5rem;
+  flex-shrink: 0;
+}
+
+div.two-column{
+  display: flex;
+  > div {
+    width: 50%;
+    flex-direction: column;
+    padding-left: .5rem;
+    border-left: 1px solid $border-color-dark;
+  }
+  div.col-large{
+    width: 70%;
+  }
+  div.col-small{
+    width: 30%;
+  }
+}
+
+div.col-tile {
+  height: $tile-height / 2;
+  width: 100%;
+  margin: .5rem .5rem;
+  flex-shrink: 0;
+}
+
+div.nameplate {
+  background-color: #025302;
+}
+
+div.recommendation {
+  background-color: #025302;
+}

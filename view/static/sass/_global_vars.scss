@@ -1,5 +1,30 @@
-/* Generic Options */
+/* Background Options */
 $background-color-dark: #282a36; // Dracula Dark BG
+$text-color-dark: #f8f8f2;
+$border-color-dark: #f8f8f2;
+
+$background-color-light: white;
+$text-color-light: black;
+
+@mixin global-light-mode($light-mode: false){
+  @if $light-mode{
+    background-color: $background-color-light;
+    color: $text-color-light;
+  }
+  @else{
+    background-color: $background-color-dark;
+    color: $text-color-dark;
+  }
+}
+
+/* Scroll Bar Options */
+$scroll-bar-dark: white;
+
+$scroll-bar-light: black;
+
+/* Tile Options */
+$tile-height: 8rem;
+$tile-width: 100% / 3;
 
 /* Nav Bar Options */
 

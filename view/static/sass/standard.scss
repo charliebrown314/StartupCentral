@@ -1,6 +1,26 @@
-@use 'global_vars';
+@use 'global_vars' as *;
 
 body {
   margin: 0;
-  background-color: $background-color-dark;
+  @include global-light-mode($light-mode: false);
+}
+
+body.light-mode {
+  @include global-light-mode($light-mode: true);
+}
+
+#content {
+  width: 70%;
+  height: 100%;
+  margin: 0 auto;
+}
+
+::-webkit-scrollbar{
+  height: .2rem;
+  width: .2rem;
+  background-color: inherit;
+}
+
+::-webkit-scrollbar-thumb{
+  background-color: $scroll-bar-dark;
 }

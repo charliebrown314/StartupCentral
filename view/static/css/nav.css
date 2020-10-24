@@ -1,34 +1,17 @@
+/* Error: Can't find stylesheet to import.
+ *   ,
+ * 1 | @use 'global_vars';
+ *   | ^^^^^^^^^^^^^^^^^^
+ *   '
+ *   nav.scss 1:1  root stylesheet */
 
-/* Dark Mode Standard*/
-nav {
-    background-color: darkgreen;
-    display: flex;
-    justify-content: flex-end;
-
+body::before {
+  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
+      "Droid Sans Mono", monospace, monospace;
+  white-space: pre;
+  display: block;
+  padding: 1em;
+  margin-bottom: 1em;
+  border-bottom: 2px solid black;
+  content: "Error: Can't find stylesheet to import.\a   \2577 \a 1 \2502  @use 'global_vars';\a   \2502  ^^^^^^^^^^^^^^^^^^\a   \2575 \a   nav.scss 1:1  root stylesheet";
 }
-
-.nav-topbar {
-    width: 100%;
-    height: 3rem;
-}
-
-.nav-button {
-    width: 6rem;
-    height: 100%;
-    border-left: 1px solid black;
-    line-height: 3rem;
-    text-align: center;
-    text-decoration: none;
-    color: #f8f8f2;
-}
-
-.nav-button:hover {
-    background-color: #025302;
-}
-
-#nav-home {
-    border-right: 1px solid black;
-    margin-right: auto;
-}
-
-/* Light Mode */

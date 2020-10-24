@@ -1,0 +1,27 @@
+@use 'global_vars';
+
+/* Dark Mode Standard */
+
+nav {
+  background-color: $nav-color-dark;
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  height: 3rem;
+  a {
+    width: 6rem;
+    height: 100%;
+    border-left: 1px solid $button-border-color-dark;
+    line-height: 3rem;
+    text-align: center;
+    text-decoration: none;
+    color: #f8f8f2;
+  }
+  a:hover {
+    background-color: $nav-hover-color-dark;
+  }
+  #nav-home {
+    border-right: 1px solid $button-border-color-dark;
+    margin-right: auto;
+  }
+}

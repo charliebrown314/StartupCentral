@@ -45,22 +45,30 @@ function toggleLightMode(){
   }
 }
 
+var currProject = {"name" : "Startup Central",
+  "desc" : 'The applications custom maps projects and devs to a fit algorithm as to make recommendations for projects that should get in touch with each other to share in their creative process and to utilize like-minded projects for feedback.',
+  'img_URL': "../static/assets/oop.jpg",
+  'tags': ['#Python', '#HTML' , '#CSS', '#SCSS', '#JS'],
+  'collabs': ['Joseph Brown', 'Nick MacCrae', 'Jacob Snyderman', 'Jon Macias']
+}
+
 function getCurrProject(){
-  return {"name" : "Startup Central", "desc" : "According to all known laws of aviation, there is no way a bee\n" +
-        "                        should be able to fly. Its wings are too small to get its fat little body off the ground.\n" +
-        "                        The bee, of course, flies anyway because bees don't care what humans think is impossible.\n" +
-        "                        Yellow, black. Yellow, black.\n" +
-        "                        Yellow, black. Yellow, black.\n" +
-        "                        Ooh, black and yellow!\n" +
-        "                        Let's shake it up a little.", 'img_URL': "../static/assets/oop.jpg", 'tags': ['#Python', '#HTML' , '#CSS', '#SCSS', '#JS']}
+  return currProject;
 }
 
-function getRecommendedProjects(){
-  return [{'name': 'Synplicity', 'desc': 'An AR Syntax Checking Tool', 'tags': ['#Python', '#C'], 'collabs': ['Jacob Snydeman', 'John Tantillo'], 'img_URL': "../static/assets/oop.jpg"}]
+function getRecommendedProjects(projName){
+  post('/getProjRecommendations', [{'projName' : projName}], true, json => {
+    console.log(json)
+  })
+  return [{'name': 'Synplicity', 'desc': 'An AR Syntax Checking Tool', 'tags': ['#Python', '#C'], 'collabs': ['Bobby DropTables', 'Jacob Snyderman', 'John Tantillo'], 'img_URL': "../static/assets/oop.jpg"}]
 }
 
-function getCollaborators(projectName){
-  return [{'name': 'Bobby DropTables', 'tags': ['#SQL','#Python', '#JS'], 'img_URL' : '../static/assets/linked_in_pfp.jpeg'}]
+function getUserData(name){
+  post('/getProfile', [{'userID': name}], true, json => {
+    let result = JSON.parse(json)
+    console.log(json)
+    return {}
+  })
 }
 
 function setUp_homePage(){
@@ -75,7 +83,8 @@ function setUp_homePage(){
   for (project of getRecommendedProjects()){
     reccommendBox.appendChild(newRecommendationTile(project['name'],project['desc'],project['img_URL']))
   }
-  for (collab of getCollaborators(project['name'])){
+  for (c_name of currProj['collabs']){
+    let collab = getUserData(c_name)
     collabBox.appendChild(newColTile(collab['name'],collab['tags'],collab['img_URL']))
   }
   loadPageTags(currProj['tags'], document.getElementById('tag-box'))
@@ -83,7 +92,7 @@ function setUp_homePage(){
 
 function search(search_string){
   let results = document.getElementById('search-results')
-  if(search_string == ''){
+  if(search_string === ''){
     for (project of getRecommendedProjects()){
       results.appendChild(newSearchResult(project['name'],project['desc'],project['tags'],project['collabs'],project['img_URL']))
     }

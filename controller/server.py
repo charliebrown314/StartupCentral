@@ -10,6 +10,7 @@ Copyright 2020 Jacob Snyderman (jacobsny@buffalo.edu)
 """
 from model.backendDefs import Projects, Dev
 import controller.set_var
+from controller import set_var
 from controller.auth_decorator import login_required, requires_access_level
 
 from datetime import datetime, timedelta
@@ -83,8 +84,9 @@ class Server:
             user_info = resp.json()
             print(user_info["email"] + " logged in on the server")
             session['profile'] = user_info
+            print(user_info)
             email = user_info["email"]
-            fname = user_info["first_name"]
+            fname = user_info["given_name"]
             lname = user_info["family_name"]
             #TODO add to DB but first check for existence
 

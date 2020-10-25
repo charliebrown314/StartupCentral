@@ -3,13 +3,8 @@ import json
 import uuid
 from typing import List
 
-from model.backendDefs import Dev, Project
-
-url = "https://databaseid-region.apps.astra.datastax.com/api/rest/v1/"
-
-key = "e12cf059-45c3-4649-937a-3a6c345029dd"
-region = "us-east1"
-keyspace = "SocialMedaDB"
+from model.Devs import Dev
+from model.Project import Project
 
 
 class Database:
@@ -59,9 +54,12 @@ class Database:
 
         response = requests.request("GET", url, headers=headers)
 
-        dev_obj = json.loads(response.text)["rows"][0]["data"]
+        dev_obj = json.loads(response.text)["rows"]
+        if not dev_obj:
+            return None
+        dev_obj=dev_obj[0]
         return Dev(firstName=dev_obj["first_name"], joinDate=dev_obj["join_date"], lasName=dev_obj["last_name"],
-                   developer=dev_obj["email"], tags=dev_obj["tags"], currentProjects=dev_obj["projects"],
+                   developer=dev_obj["name"], tags=dev_obj["tags"], currentProjects=dev_obj["projects"],
                    lastSession=dev_obj["last_session"])
 
     def setUser(self, dev_class: Dev) -> None:
@@ -114,11 +112,11 @@ class Database:
         headers = {
             "Accept": "application/json",
             "X-Cassandra-Token": self.token,
-            "X-Cassandra-Request-Id": uuid.uuid1()
+            "X-Cassandra-Request-Id": str(uuid.uuid1())
         }
 
         response = requests.request("GET", url, headers=headers)
-        project_obj = json.loads(response.text)["rows"][0]["data"]
+        project_obj = json.loads(response.text)["rows"][0]
         return Project(project_obj["active"], project_obj["created_date"], project_obj["description"],
                        project_obj["dev_list"], project_obj["manager"], project_obj["name"], project_obj["tags"])
 

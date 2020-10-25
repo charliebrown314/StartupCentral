@@ -2,7 +2,7 @@ import requests
 import json
 
 from controller.database import Database
-from model.backendDefs import Project
+from model.Devs import Project
 import datetime
 
 test_db = Database("e12cf059-45c3-4649-937a-3a6c345029dd", "us-east1", "StartupCentral", "JacobIsTheBest", "SocialMedaDB")

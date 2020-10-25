@@ -8,7 +8,6 @@ Copyright 2020 Jacob Snyderman (jacobsny@buffalo.edu)
  To view a copy of this license, visit
  http://creativecommons.org/licenses/by-nc-sa/4.0/.
 """
-from model.backendDefs import Projects, Dev
 import controller.set_var
 from controller import set_var
 from controller.auth_decorator import login_required, requires_access_level
@@ -19,13 +18,7 @@ from authlib.integrations.flask_client import OAuth
 import json
 import os
 
-from database import Database
-
-
-class User:
-    def __init__(self):
-        self.name = None
-        self.is_authenticated = False
+from model.Projects import Projects
 
 
 class Server:
@@ -93,9 +86,7 @@ class Server:
             result = self.projects.DB.getUser(email)
 
             if not result:
-                new_dev = Dev(fname, datetime.date, lname, email, [], [], datetime.now)
-
-                self.projects.DB.setUser(new_dev)
+                self.projects.addDev(fname, datetime.now(),lname,email)
 
             session.permanent = True  # make the session permanent so it keeps existing after browser gets closed
             return redirect('/')
@@ -106,10 +97,10 @@ class Server:
             for key in list(session.keys()):
                 session.pop(key)
             return redirect('/')
-        
-        @self.app.route("/getProfile/", methods=["POST"])
+
         @login_required
-        def getProfile(self):
+        @self.app.route("/getProfile", methods=["POST"])
+        def getProfile():
 
             request_data = request.get_json()
 
@@ -117,26 +108,26 @@ class Server:
 
             return json.dumps(self.Projects.DB.getUser(userID))
 
-        @self.app.route("/getProject", methods=["POST"])
         @login_required
-        def getProject(self):
+        @self.app.route("/getProject", methods=["POST"])
+        def getProject():
 
             request_data = request.get_json()
             projectName = request_data["projectName"]
 
             return json.dumps(self.Projects.DB.getProject(projectName))
 
-        @self.app.route("/getDevRecommendations", methods=["POST"])
         @login_required
-        def getDevRecommendations(self,):
+        @self.app.route("/getDevRecommendations", methods=["POST"])
+        def getDevRecommendations():
             request_data = request.get_json()
             tags = request_data["tags"]
 
             return json.dumps(self.Projects.DB.getDevRecommendations(tags))
 
-        @self.app.route("/getProjRecommendations", methods=["POST"])
         @login_required
-        def getProjRecommendations(self):
+        @self.app.route("/getProjRecommendations", methods=["POST"])
+        def getProjRecommendations():
 
             request_data = request.get_json()
 
@@ -144,9 +135,9 @@ class Server:
 
             return json.dumps(self.Projects.proj_recommendations(projName))
 
-        @self.app.route("/getProjNames", methods=["GET", "POST"])
         @login_required
-        def getProjNames(self):
+        @self.app.route("/getProjNames", methods=["GET", "POST"])
+        def getProjNames():
             return json.dumps(self.Projects.DB.getProjectNames())
 
     def start(self):

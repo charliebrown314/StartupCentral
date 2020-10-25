@@ -1,7 +1,7 @@
 from datetime import datetime
 import random
 
-from model.backendDefs import Project, Dev
+from model.Devs import Project, Dev
 
 desc = "this is the generic description that I don't modify"
 emails = ["jwbrown4@buffalo.edu", "jacobsny@buffalo.edu", "jmacias@buffalo.edu", "nmacrae@buffalo.edu", "johntant@buffalo.edu", "smalinow@buffalo.edu","johnduna@buffalo.edu"]

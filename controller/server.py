@@ -8,8 +8,8 @@ Copyright 2020 Jacob Snyderman (jacobsny@buffalo.edu)
  To view a copy of this license, visit
  http://creativecommons.org/licenses/by-nc-sa/4.0/.
 """
-import set_var
-from auth_decorator import login_required, requires_access_level
+import controller.set_var
+from controller.auth_decorator import login_required, requires_access_level
 import data.samples
 
 from datetime import datetime, timedelta
@@ -24,8 +24,8 @@ from model.Projects import Projects
 class Server:
     
     def __init__(self):
-        set_var.main()
-        self.app = Flask(__name__)
+        controller.set_var.main()
+        self.app = Flask(__name__,static_folder="../view/static")
         self.app.secret_key = os.getenv("APP_SECRET_KEY")
         self.app.config['SESSION_COOKIE_NAME'] = 'google-login-session'
         self.app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(hours=24)
@@ -57,6 +57,11 @@ class Server:
             except:
                 email = "no one yet"
             return f'Hello, you are logged in as {email}!'
+
+        @self.app.route('/<path:path>')
+        def static_proxy(path):
+            # send_static_file will guess the correct MIME type
+            return self.app.send_static_file(path)
 
         @self.app.route('/login')
         def login():
@@ -141,8 +146,7 @@ class Server:
 
         #     request_data = request.get_json()
 
-        #     data = json.dumps(self.Projects.ge)
-
+            request_data = request.get_json()
 
         @login_required
         @self.app.route("/getProjNames", methods=["GET", "POST"])
@@ -166,5 +170,3 @@ class Server:
 if __name__ == '__main__':
     server = Server()
     server.start()
-    data.samples.load()
-    

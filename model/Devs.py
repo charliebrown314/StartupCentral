@@ -26,7 +26,7 @@ class Dev:
         #taglist may have to have element from dev
         currentDeveloper = self.developer
         for tag in addlist:
-            currentDeveloper.add(tag)
+            self.tags.append(tag)
         return currentDeveloper
 
     def updateTagRemove(self, removeList):
@@ -41,7 +41,7 @@ class Dev:
         #need to confirm where the items are held
         developerProjects = self.projects
         for project in addProjectList:
-            developerProjects.add(project)
+            developerProjects.append(project)
         return developerProjects
 
     def updateRemoveProjects(self, removeProjectList):

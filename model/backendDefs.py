@@ -6,6 +6,31 @@ import time
 
 #active(boolean), created_date (date), description (text), dev_list(list<text>)., manager (text),
 # name (text), tags(set<text>)
+from controller.database import Database
+from model.modeling import Model
+
+
+class Projects:
+    def __init__(self):
+        self.DB = Database("e12cf059-45c3-4649-937a-3a6c345029dd", "us-east1", "StartupCentral", "JacobIsTheBest", "SocialMedaDB")
+        self.pnames = self.DB.getProjectNames()
+        self.projects = [self.DB.getProject(i) for i in self.pnames]
+        self.Model = Model([p.project] + p.tags for p in self.projects)
+        self.devs = [self.DB.getUser(d) for d in sum([p.developers for p in self.projects])]
+
+    def dev_recommendation(self,tags):
+        return self.Model.dev_recommendation(tags,[[d.developer,d.firstname,d.lastName]+d.tags for d in self.devs])
+
+    def proj_recommendation(self, p_name):
+        return self.Model.recommendations(p_name)
+
+    def refresh_struct(self):
+        self.pnames = self.DB.getProjectNames()
+        self.projects = [self.DB.getProject(i) for i in self.pnames]
+        self.Model = Model([p.project] + p.tags for p in self.projects)
+        self.devs = [self.DB.getUser(d) for d in sum([p.developers for p in self.projects])]
+
+
 
 class Project:
 
@@ -76,6 +101,8 @@ class Project:
         currentManager = self.manager
         currentManager = newManager
         return currentManager
+
+
 
 
 

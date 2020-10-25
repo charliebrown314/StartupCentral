@@ -16,12 +16,31 @@ class Project:
         self.description = description
         self.active = active
 
-    def updateDevList(self):
+#this is going to take in the currrent List of addDevList, the set will not allow duplicates so no  checking needed
+    def updateAddDevList(self, addDevList):
+        currentDevList = self.developerList
+        for developer in addDevList:
+            currentDevList.add(developer)
+        return currentDevList
 
-        return 0
+#removes developers in the set to remove from the project set, discrad wil not throw an error if the tag does not exist
+    def updateRemoveDevList(self, removeDevList):
+        currentDevList = self.developerList
+        for developer in removeDevList:
+            currentDevList.discard(developer)
+        return currentDevList
 
-    def updateTags(self):
-        return 0
+    def updateAddTags(self, addTagList):
+        currentTagSet = self.currentTags
+        for tag in addTagList:
+            currentTagSet.add(tag)
+        return currentTagSet
+
+    def updateRemoveTags(self, removeTagList):
+        currentTagSet = self.currentTags
+        for tag in removeTagList:
+            currentTagSet.discard(tag)
+        return currentTagSet
 
     def updateActive(self):
         return 0
@@ -59,6 +78,7 @@ class Dev:
 
     def updateTagRemove(self, removeList):
         #taglist may have to have element from dev
+        currentDeveloper = self.developer
         for tag in removeList:
             currentDeveloper.discard(tag)
         return currentDeveloper
@@ -83,8 +103,3 @@ class Dev:
         currenttime = date.today()
         lastOnline = currenttime
         return lastOnline
-
-    def updateLastname(self):
-
-
-        return None

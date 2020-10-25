@@ -116,7 +116,10 @@ class Database:
         }
 
         response = requests.request("GET", url, headers=headers)
-        project_obj = json.loads(response.text)["rows"][0]
+        project_obj = json.loads(response.text)["rows"]
+        if not project_obj:
+            return None
+        project_obj = project_obj[0]
         return Project(project_obj["active"], project_obj["created_date"], project_obj["description"],
                        project_obj["dev_list"], project_obj["manager"], project_obj["name"], project_obj["tags"])
 

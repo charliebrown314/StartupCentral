@@ -112,12 +112,12 @@ class Server:
         @login_required
         @self.app.route("/getProfile/<userID>")
         def getProfile(userID):
-            return json.dumps(self.Projects.DB.getUser(userID))
+            return json.dumps(self.projects.DB.getUser(userID))
 
         @login_required
         @self.app.route("/getProject/<projectName>")
         def getProject(projectName):
-            return json.dumps(self.Projects.DB.getProject(projectName))
+            return json.dumps(self.projects.DB.getProject(projectName))
 
         @login_required
         @self.app.route("/getDevRecommendations", methods=["POST"])
@@ -125,17 +125,17 @@ class Server:
             request_data = request.get_json()
             tags = request_data["tags"]
 
-            return json.dumps(self.Projects.DB.getDevRecommendations(tags))
+            return json.dumps(self.projects.DB.getDevRecommendations(tags))
 
         @login_required
         @self.app.route("/getProjRecommendations/<projName>")
         def getProjRecommendations(projName):
-            return json.dumps(self.Projects.proj_recommendations(projName))
+            return json.dumps(self.projects.proj_recommendations(projName))
 
         @login_required
         @self.app.route("/getProjNames", methods=["GET", "POST"])
         def getProjNames():
-            return json.dumps(self.Projects.DB.getProjectNames())
+            return json.dumps(self.projects.DB.getProjectNames())
 
     def start(self):
         print("Server Running On Port: 8080")

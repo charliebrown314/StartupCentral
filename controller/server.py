@@ -1,5 +1,4 @@
 """
-116commandcenter.server
 This code is partially written and produced by Jacob Snyderman
 part of this code is repurposed code by github user Vuka951
 for the use of CSE116 at the University at Buffalo
@@ -9,13 +8,17 @@ Copyright 2020 Jacob Snyderman (jacobsny@buffalo.edu)
  To view a copy of this license, visit
  http://creativecommons.org/licenses/by-nc-sa/4.0/.
 """
+from model.backendDefs import Projects, Dev
 import controller.set_var
 from controller.auth_decorator import login_required, requires_access_level
-from datetime import timedelta
+
+from datetime import datetime, timedelta
 from flask import Flask, redirect, url_for, session, request
 from authlib.integrations.flask_client import OAuth
 import json
 import os
+
+from database import Database
 
 
 class User:
@@ -25,6 +28,7 @@ class User:
 
 
 class Server:
+    
     def __init__(self):
         set_var.main()
         self.app = Flask(__name__)
@@ -45,7 +49,8 @@ class Server:
             # This is only needed if using openId to fetch user info
             client_kwargs={'scope': 'openid email profile'},
         )
- 
+
+        self.projects : Projects = Projects("e12cf059-45c3-4649-937a-3a6c345029dd", "us-east1", "StartupCentral", "JacobIsTheBest", "SocialMedaDB")
         self.secretKey = "ThisIsTheMostSecretPasswordEver"
 
         @self.app.route('/')
@@ -81,7 +86,15 @@ class Server:
             email = user_info["email"]
             fname = user_info["first_name"]
             lname = user_info["family_name"]
-            #TODO add to DB
+            #TODO add to DB but first check for existence
+
+            result = self.projects.DB.getUser(email)
+
+            if not result:
+                new_dev = Dev(fname, datetime.date, lname, email, [], [], datetime.now)
+
+                self.projects.DB.setUser(new_dev)
+
             session.permanent = True  # make the session permanent so it keeps existing after browser gets closed
             return redirect('/')
 
@@ -91,6 +104,48 @@ class Server:
             for key in list(session.keys()):
                 session.pop(key)
             return redirect('/')
+        
+        @self.app.route("/getProfile/", methods=["POST"])
+        @login_required
+        def getProfile(self):
+
+            request_data = request.get_json()
+
+            userID = request_data["userID"]
+
+            return json.dumps(self.Projects.DB.getUser(userID))
+
+        @self.app.route("/getProject", methods=["POST"])
+        @login_required
+        def getProject(self):
+
+            request_data = request.get_json()
+            projectName = request_data["projectName"]
+
+            return json.dumps(self.Projects.DB.getProject(projectName))
+
+        @self.app.route("/getDevRecommendations", methods=["POST"])
+        @login_required
+        def getDevRecommendations(self,):
+            request_data = request.get_json()
+            tags = request_data["tags"]
+
+            return json.dumps(self.Projects.DB.getDevRecommendations(tags))
+
+        @self.app.route("/getProjRecommendations", methods=["POST"])
+        @login_required
+        def getProjRecommendations(self):
+
+            request_data = request.get_json()
+
+            projName = request_data["projName"]
+
+            return json.dumps(self.Projects.proj_recommendations(projName))
+
+        @self.app.route("/getProjNames", methods=["GET", "POST"])
+        @login_required
+        def getProjNames(self):
+            return json.dumps(self.Projects.DB.getProjectNames())
 
     def start(self):
         print("Server Running On Port: 8080")
@@ -102,6 +157,8 @@ class Server:
         if func is None:
             raise RuntimeError('Not running with the Werkzeug Server')
         func()
+
+    
 
 
 if __name__ == '__main__':

@@ -106,10 +106,10 @@ class Database:
 
         requests.request("POST", url, json=payload, headers=headers)
 
-    def getProject(self, project) -> Project:
+    def getProject(self, name) -> Project:
         url = self.url + "keyspaces/{keyspace}/tables/{projectTable}/rows/{primaryKey}".format(keyspace=self.keyspace,
                                                                                                projectTable="Projects",
-                                                                                               primaryKey=project)
+                                                                                               primaryKey=name)
 
         headers = {
             "Accept": "application/json",

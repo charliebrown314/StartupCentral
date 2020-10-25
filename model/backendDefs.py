@@ -11,8 +11,8 @@ from model.modeling import Model
 
 
 class Projects:
-    def __init__(self):
-        self.DB = Database("e12cf059-45c3-4649-937a-3a6c345029dd", "us-east1", "StartupCentral", "JacobIsTheBest", "SocialMedaDB")
+    def __init__(self, APIkey:str, region:str, username:str, password:str, keyspace:str):
+        self.DB : Database = Database(APIkey, region, username, password, keyspace)
         self.pnames = self.DB.getProjectNames()
         self.projects = [self.DB.getProject(i) for i in self.pnames]
         self.Model = Model([p.project] + p.tags for p in self.projects)

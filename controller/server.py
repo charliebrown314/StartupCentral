@@ -8,9 +8,8 @@ Copyright 2020 Jacob Snyderman (jacobsny@buffalo.edu)
  To view a copy of this license, visit
  http://creativecommons.org/licenses/by-nc-sa/4.0/.
 """
-import controller.set_var
-from controller import set_var
-from controller.auth_decorator import login_required, requires_access_level
+import set_var
+from auth_decorator import login_required, requires_access_level
 
 from datetime import datetime, timedelta
 from flask import Flask, redirect, url_for, session, request
@@ -134,6 +133,12 @@ class Server:
             projName = request_data["projName"]
 
             return json.dumps(self.Projects.proj_recommendations(projName))
+
+        @login_required
+        @self.app.rout("/searchProject", methods=["POST"])
+        def searchProjects():
+
+            request_data = request.get_json()
 
         @login_required
         @self.app.route("/getProjNames", methods=["GET", "POST"])

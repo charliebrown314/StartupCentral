@@ -141,8 +141,7 @@ class Server:
 
         #     request_data = request.get_json()
 
-        #     data = json.dumps(self.Projects.ge)
-
+            request_data = request.get_json()
 
         @login_required
         @self.app.route("/getProjNames", methods=["GET", "POST"])
@@ -166,5 +165,3 @@ class Server:
 if __name__ == '__main__':
     server = Server()
     server.start()
-    data.samples.load()
-    

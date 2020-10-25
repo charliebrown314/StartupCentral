@@ -1,7 +1,7 @@
-/* Background Options */
+/* Generic Options */
 $background-color-dark: #282a36; // Dracula Dark BG
 $text-color-dark: #f8f8f2;
-$border-color-dark: #525463;
+$secondary-color-dark: #525463;
 
 $background-color-light: white;
 $text-color-light: black;
@@ -16,11 +16,6 @@ $text-color-light: black;
     color: $text-color-dark;
   }
 }
-
-/* Scroll Bar Options */
-$scroll-bar-dark: #525463;
-
-$scroll-bar-light: black;
 
 /* Tile Options */
 $tile-height: 8rem;
@@ -49,4 +44,6 @@ $tag-color-light: #000000B3;
 $tag-hover-light: #000000;
 
 /* Project Tab - Search Options */
-$search-bg-color-dark: darkgreen;
+$caret-color-dark: white;
+
+$caret-color-light: black;

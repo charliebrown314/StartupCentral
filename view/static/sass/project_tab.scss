@@ -1,7 +1,105 @@
 @use 'global_vars' as *;
 
-input {
-  background-color: $search-bg-color-dark;
-  margin: 1rem auto;
-
+#search-bar {
+  display: flex;
+  justify-content: center;
+  flex-direction: row-reverse;
+  margin-top: 1rem;
+  input {
+    background: none;
+    height: 2rem;
+    width: 50%;
+    border: 0;
+    caret-color: $caret-color-dark;
+    color: $text-color-dark;
+    border-bottom: 2px solid $nav-color-dark;
+  }
+  ::placeholder {
+    color: $text-color-dark;
+  }
+  input:focus {
+    outline: 0;
+  }
+  button {
+    border-top-right-radius: .5rem;
+    background-color: $nav-color-dark;
+    color: $text-color-dark;
+    border: 0;
+  }
+  button:focus {
+    outline: 0;
+  }
+  button:hover {
+    background-color: $nav-hover-color-dark;
+  }
+  button:hover + input {
+    border-bottom-color: $nav-hover-color-dark;
+  }
 }
+
+#search-results{
+  div.search-result {
+    border-top-right-radius: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    padding: .5rem;
+    margin-top: 1rem;
+    max-height: 20rem;
+    background-color: $tile-color-dark;
+    div.search-result-name {
+      flex-basis: 100%;
+      padding-bottom: .5rem;
+      border-bottom: 2px solid $text-color-dark;
+      margin-bottom: .5rem;
+      display: block;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    div.search-tag-result-wrapper {
+      flex-direction: column;
+      flex-basis: 70%;
+      div.search-desc-wrapper {
+        display: block;
+        div.search-result-desc {
+          margin-bottom: 1rem;
+          display: -webkit-box;
+          -webkit-line-clamp: 5;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+        }
+      }
+      div.search-result-tags {
+        margin-top: .5rem;
+        margin-bottom: .5rem;
+        display: flex;
+        flex-wrap: wrap;
+        div {
+          margin-bottom: .5rem;
+        }
+      }
+      div.search-result-collabs {
+        display: flex;
+        flex-wrap: wrap;
+        div {
+          margin-bottom: .5rem;
+        }
+      }
+    }
+    div.search-img-wrapper {
+      flex-basis: 30%;
+      justify-content: center;
+      display: flex;
+      align-content: center;
+      img {
+        border-radius: 20%;
+        max-width: 100%;
+        max-height: 15rem;
+        height: auto;
+        width: auto;
+      }
+    }
+  }
+}
+

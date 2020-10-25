@@ -1,4 +1,4 @@
-from datetime import date
+import time
 
 #keys for the dictionary in JS should be projectName, devList, tags, date, active, description, manager
 #may need functionality for the removal of devs
@@ -131,6 +131,6 @@ class Dev:
         return developerProjects
 
     def updateLastSession(self, lastSession):
-        currenttime = date.today()
+        currenttime = time.time()
         lastOnline = currenttime
         return lastOnline

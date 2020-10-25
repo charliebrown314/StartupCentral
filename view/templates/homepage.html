@@ -6,102 +6,44 @@
     <link rel="stylesheet" href="../static/css/nav.css">
     <link rel="stylesheet" href="../static/css/standard.css">
     <link rel="stylesheet" href="../static/css/tiles.css">
+    <link rel="stylesheet" href="../static/css/profile.css">
     <script src="../static/js/functions.js"></script>
+    <script src="../static/js/factories.js"></script>
 </head>
-<body onload="setUp();">
+<body onload="setUp_homePage();">
 <nav class="nav nav-topbar">
     <a class="nav-selected" href="homepage.html" id="nav-home">Home</a>
     <a href="projects.html" id="nav-projects">Projects</a>
     <a href="messaging.html" id="nav-messaging">Messaging</a>
     <a href="profile.html" id="nav-profile">Profile</a>
-    <a href="settings.html" id="nav-settings">Settings</a>
+    <div class="settings-wrapper">
+    <a onclick="this.classList.toggle('toggle')" id="nav-settings">Settings</a>
+    <div id="settings-drop-down">
+        <label class="light-mode-toggle">
+            Light Mode
+            <input type="checkbox" onclick="toggleLightMode()">
+            <span class="slider round"></span>
+        </label>
+    </div>
+    </div>
 </nav>
 <div id="content">
-    <h1>Social Media Thingy</h1>
+    <h1 id="curr-project-name"></h1>
     <div class="two-column" id="home-main">
         <div class="col-large">
-            <h2>Generic Info</h2>
+            <h2>Description</h2>
+            <div id="curr-project-description"></div>
+            <h2>Tags</h2>
+            <div id="tag-box"></div>
         </div>
         <div class="col-small" id="collaborators">
             <h2>Collaborators</h2>
             <div class="col-scroll-wrapper">
-                <div class="col-tile nameplate tile-clickable">
-                    <div>
-                    <div class="tile-name"> Bobby DropTables</div>
-                    <div class="nameplate-tags">
-                        <div class="tag">#SQL</div>
-                        <div class="tag">#Python</div>
-                        <div class="tag">#Sanitation</div>
-                        ...
-                    </div>
-                    </div>
-                    <img src="../assets/linked_in_pfp.jpeg">
-                </div>
-                <div class="col-tile nameplate tile-clickable"><div><div class="tile-name">Enigo Montoya you killed my father prepare to die</div></div><img src="../assets/linked_in_pfp.jpeg"></div>
-                <div class="col-tile nameplate tile-clickable"><div><div class="tile-name">Heinz Doofenschmirtz</div></div><img src="../assets/linked_in_pfp.jpeg"></div>
             </div>
         </div>
     </div>
     <h1>Recommended Projects</h1>
     <div class="single-row" id="reccomendations">
-        <div class="row-tile recommendation tile-clickable">
-            <div class="tile-name"> An Unnecessarily Long Title that is really really really long</div>
-            <hr>
-            <div>
-                <div class="recommendation-desc">
-                    According to all known laws of aviation, there is no way a bee
-                    should be able to fly. Its wings are too small to get its fat little body off the ground.
-                    The bee, of course, flies anyway because bees don't care what humans think is impossible.
-                    Yellow, black. Yellow, black.
-                    Yellow, black. Yellow, black.
-                    Ooh, black and yellow!
-                    Let's shake it up a little.
-                </div><img src="../assets/oop.jpg">
-            </div>
-        </div>
-        <div class="row-tile recommendation tile-clickable">
-            <div class="tile-name"> An Unnecessarily Long Title that is really really really long</div>
-            <hr>
-            <div>
-                <div class="recommendation-desc">
-                    According to all known laws of aviation, there is no way a bee
-                    should be able to fly. Its wings are too small to get its fat little body off the ground.
-                    The bee, of course, flies anyway because bees don't care what humans think is impossible.
-                    Yellow, black. Yellow, black.
-                    Yellow, black. Yellow, black.
-                    Ooh, black and yellow!
-                    Let's shake it up a little.
-                </div><img src="../assets/oop.jpg">
-            </div>
-        </div><div class="row-tile recommendation tile-clickable">
-            <div class="tile-name"> An Unnecessarily Long Title that is really really really long</div>
-            <hr>
-            <div>
-                <div class="recommendation-desc">
-                    According to all known laws of aviation, there is no way a bee
-                    should be able to fly. Its wings are too small to get its fat little body off the ground.
-                    The bee, of course, flies anyway because bees don't care what humans think is impossible.
-                    Yellow, black. Yellow, black.
-                    Yellow, black. Yellow, black.
-                    Ooh, black and yellow!
-                    Let's shake it up a little.
-                </div><img src="../assets/oop.jpg">
-            </div>
-        </div><div class="row-tile recommendation tile-clickable">
-            <div class="tile-name"> An Unnecessarily Long Title that is really really really long</div>
-            <hr>
-            <div>
-                <div class="recommendation-desc">
-                    According to all known laws of aviation, there is no way a bee
-                    should be able to fly. Its wings are too small to get its fat little body off the ground.
-                    The bee, of course, flies anyway because bees don't care what humans think is impossible.
-                    Yellow, black. Yellow, black.
-                    Yellow, black. Yellow, black.
-                    Ooh, black and yellow!
-                    Let's shake it up a little.
-                </div><img src="../assets/oop.jpg">
-            </div>
-        </div>
     </div>
 </div>
 </body>

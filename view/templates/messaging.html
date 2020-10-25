@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../static/css/tiles.css">
     <link rel="stylesheet" href="../static/css/messaging.css">
     <script src="../static/js/functions.js"></script>
+    <script src="../static/js/factories.js"></script>
 </head>
 <body onload="setUp();">
 <nav class="nav nav-topbar">
@@ -15,7 +16,17 @@
     <a href="projects.html" id="nav-projects">Projects</a>
     <a class="nav-selected" href="messaging.html" id="nav-messaging">Messaging</a>
     <a href="profile.html" id="nav-profile">Profile</a>
-    <a href="settings.html" id="nav-settings">Settings</a>
+    <div class="settings-wrapper">
+    <a onclick="this.classList.toggle('toggle')" id="nav-settings">Settings</a>
+    <div id="settings-drop-down">
+        <label class="light-mode-toggle">
+            Light Mode
+            <input type="checkbox" onclick="toggleLightMode()">
+            <span class="slider round"></span>
+        </label>
+    </div>
+    </div>
+
 </nav>
 <div id="content">
     <div class="messaging-window">

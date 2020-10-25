@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../static/css/tiles.css">
     <link rel="stylesheet" href="../static/css/project_tab.css">
     <script src="../static/js/functions.js"></script>
+    <script src="../static/js/factories.js"></script>
 </head>
 <body>
 <nav class="nav nav-topbar">
@@ -15,7 +16,16 @@
     <a class="nav-selected" href="projects.html" id="nav-projects">Projects</a>
     <a href="messaging.html" id="nav-messaging">Messaging</a>
     <a href="profile.html" id="nav-profile">Profile</a>
-    <a href="settings.html" id="nav-settings">Settings</a>
+    <div class="settings-wrapper">
+    <a onclick="this.classList.toggle('toggle')" id="nav-settings">Settings</a>
+    <div id="settings-drop-down">
+        <label class="light-mode-toggle">
+            Light Mode
+            <input type="checkbox" onclick="toggleLightMode()">
+            <span class="slider round"></span>
+        </label>
+    </div>
+    </div>
 </nav>
 <div id="content">
     <div id="search-bar">
@@ -23,151 +33,7 @@
         <input type="text" placeholder="Find a Project...">
     </div>
     <div id="search-results">
-        <div class="search-result">
-            <div class="search-result-name">A Normal Length Title</div>
-            <div class="search-tag-result-wrapper">
-                <div class="search-result-desc">
-                    According to all known laws of aviation, there is no way a bee
-                        should be able to fly. Its wings are too small to get its fat little body off the ground.
-                        The bee, of course, flies anyway because bees don't care what humans think is impossible.
-                        Yellow, black. Yellow, black.
-                        Yellow, black. Yellow, black.
-                        Ooh, black and yellow!
-                        Let's shake it up a little.
-                </div>
-                <div class="search-result-tags">
-                    <div class="tag">#Its</div>
-                    <div class="tag">#The</div>
-                    <div class="tag">#Bee</div>
-                    <div class="tag">#Movie</div>
-                    <div class="tag">#Lol</div>
-                </div>
-                <h3>Collaborators:</h3>
-                <div class="search-result-collabs">
-                    <div class="tag">Bobby DropTables</div>
-                    <div class="tag">Enigo Montoya</div>
-                    <div class="tag">Barry B Beeson</div>
-                </div>
-            </div>
-            <div class="search-img-wrapper">
-                <img src="../assets/oop.jpg">
-            </div>
-        </div>
-        <div class="search-result">
-            <div class="search-result-name">An Unnecessarily Long Title that is reeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeally really really long</div>
-            <div class="search-tag-result-wrapper">
-                <div class="search-desc-wrapper">
-                    <div class="search-result-desc">
-                        According to all known laws of aviation, there is no way a bee
-                            should be able to fly. Its wings are too small to get its fat little body off the ground.
-                            The bee, of course, flies anyway because bees don't care what humans think is impossible.
-                            Yellow, black. Yellow, black.
-                            Yellow, black. Yellow, black.
-                            Ooh, black and yellow!
-                            Let's shake it up a little.
-                        According to all known laws of aviation, there is no way a bee
-                            should be able to fly. Its wings are too small to get its fat little body off the ground.
-                            The bee, of course, flies anyway because bees don't care what humans think is impossible.
-                            Yellow, black. Yellow, black.
-                            Yellow, black. Yellow, black.
-                            Ooh, black and yellow!
-                            Let's shake it up a little.
-                        According to all known laws of aviation, there is no way a bee
-                            should be able to fly. Its wings are too small to get its fat little body off the ground.
-                            The bee, of course, flies anyway because bees don't care what humans think is impossible.
-                            Yellow, black. Yellow, black.
-                            Yellow, black. Yellow, black.
-                            Ooh, black and yellow!
-                            Let's shake it up a little.
-                    </div>
-                </div>
-                <div class="search-result-tags">
-                    <div class="tag">#Its</div>
-                    <div class="tag">#The</div>
-                    <div class="tag">#Bee</div>
-                    <div class="tag">#Movie</div>
-                    <div class="tag">#Lol</div>
-                    <div class="tag">#Anotha Tag</div>
-                    <div class="tag">#Anotha Tag</div>
-                    <div class="tag">#Anotha Tag</div>
-                    <div class="tag">#Anotha Tag</div>
-                    <div class="tag">#Anotha Tag</div>
-                    <div class="tag">#Anotha Tag</div>
-                </div>
-                <h3>Collaborators:</h3>
-                <div class="search-result-collabs">
-                    <div class="tag">Bobby DropTables</div>
-                    <div class="tag">Enigo Montoya</div>
-                    <div class="tag">Barry B Beeson</div>
-                    <div class="tag">Anotha Person</div>
-                    <div class="tag">Anotha Person</div>
-                    <div class="tag">Anotha Person</div>
-                    <div class="tag">Anotha Person</div>
-                    <div class="tag">Anotha Person</div>
-                </div>
-            </div>
-            <div class="search-img-wrapper">
-                <img src="../assets/oop.jpg">
-            </div>
-        </div><div class="search-result">
-            <div class="search-result-name">A Normal Length Title</div>
-            <div class="search-tag-result-wrapper">
-                <div class="search-result-desc">
-                    According to all known laws of aviation, there is no way a bee
-                        should be able to fly. Its wings are too small to get its fat little body off the ground.
-                        The bee, of course, flies anyway because bees don't care what humans think is impossible.
-                        Yellow, black. Yellow, black.
-                        Yellow, black. Yellow, black.
-                        Ooh, black and yellow!
-                        Let's shake it up a little.
-                </div>
-                <div class="search-result-tags">
-                    <div class="tag">#Its</div>
-                    <div class="tag">#The</div>
-                    <div class="tag">#Bee</div>
-                    <div class="tag">#Movie</div>
-                    <div class="tag">#Lol</div>
-                </div>
-                <h3>Collaborators:</h3>
-                <div class="search-result-collabs">
-                    <div class="tag">Bobby DropTables</div>
-                    <div class="tag">Enigo Montoya</div>
-                    <div class="tag">Barry B Beeson</div>
-                </div>
-            </div>
-            <div class="search-img-wrapper">
-                <img src="../assets/oop.jpg">
-            </div>
-        </div><div class="search-result">
-            <div class="search-result-name">A Normal Length Title</div>
-            <div class="search-tag-result-wrapper">
-                <div class="search-result-desc">
-                    According to all known laws of aviation, there is no way a bee
-                        should be able to fly. Its wings are too small to get its fat little body off the ground.
-                        The bee, of course, flies anyway because bees don't care what humans think is impossible.
-                        Yellow, black. Yellow, black.
-                        Yellow, black. Yellow, black.
-                        Ooh, black and yellow!
-                        Let's shake it up a little.
-                </div>
-                <div class="search-result-tags">
-                    <div class="tag">#Its</div>
-                    <div class="tag">#The</div>
-                    <div class="tag">#Bee</div>
-                    <div class="tag">#Movie</div>
-                    <div class="tag">#Lol</div>
-                </div>
-                <h3>Collaborators:</h3>
-                <div class="search-result-collabs">
-                    <div class="tag">Bobby DropTables</div>
-                    <div class="tag">Enigo Montoya</div>
-                    <div class="tag">Barry B Beeson</div>
-                </div>
-            </div>
-            <div class="search-img-wrapper">
-                <img src="../assets/oop.jpg">
-            </div>
-        </div>
+
     </div>
 </div>
 

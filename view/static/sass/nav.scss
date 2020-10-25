@@ -48,6 +48,45 @@
       border-right: 1px solid $button-border-color-dark;
     }
   }
+  .settings-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 6rem;
+    #nav-settings{
+      @if $light-mode {
+        border-right: 1px solid $button-border-color-light;
+      } @else {
+        border-right: 1px solid $button-border-color-dark;
+      }
+    }
+    #nav-settings:hover {
+      cursor: pointer;
+    }
+    #nav-settings.toggle {
+      @if $light-mode {
+        background-color: $nav-hover-color-light
+      } @else {
+        background-color: $nav-hover-color-dark;
+      }
+    }
+
+    #nav-settings.toggle + div {
+      display: block;
+      @if $light-mode {
+        background-color: $nav-hover-color-light
+      } @else {
+        background-color: $nav-hover-color-dark;
+      }
+    }
+
+    #nav-settings + div {
+      display: none;
+      width: 8rem;
+      position: relative;
+      right: 2rem;
+      padding: 1rem;
+    }
+  }
 }
 
 nav {

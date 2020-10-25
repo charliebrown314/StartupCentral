@@ -32,6 +32,31 @@ nav #nav-home {
   margin-right: auto;
   border-right: 1px solid white;
 }
+nav .settings-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 6rem;
+}
+nav .settings-wrapper #nav-settings {
+  border-right: 1px solid white;
+}
+nav .settings-wrapper #nav-settings:hover {
+  cursor: pointer;
+}
+nav .settings-wrapper #nav-settings.toggle {
+  background-color: #007856;
+}
+nav .settings-wrapper #nav-settings.toggle + div {
+  display: block;
+  background-color: #007856;
+}
+nav .settings-wrapper #nav-settings + div {
+  display: none;
+  width: 8rem;
+  position: relative;
+  right: 2rem;
+  padding: 1rem;
+}
 
 nav.light-mode {
   background-color: lightgreen;
@@ -59,6 +84,31 @@ nav.light-mode a:hover {
 nav.light-mode #nav-home {
   margin-right: auto;
   border-left: 1px solid black;
+}
+nav.light-mode .settings-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 6rem;
+}
+nav.light-mode .settings-wrapper #nav-settings {
+  border-right: 1px solid black;
+}
+nav.light-mode .settings-wrapper #nav-settings:hover {
+  cursor: pointer;
+}
+nav.light-mode .settings-wrapper #nav-settings.toggle {
+  background-color: darkgreen;
+}
+nav.light-mode .settings-wrapper #nav-settings.toggle + div {
+  display: block;
+  background-color: darkgreen;
+}
+nav.light-mode .settings-wrapper #nav-settings + div {
+  display: none;
+  width: 8rem;
+  position: relative;
+  right: 2rem;
+  padding: 1rem;
 }
 
 /*# sourceMappingURL=nav.css.map */

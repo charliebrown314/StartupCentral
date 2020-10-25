@@ -6,7 +6,7 @@
 /* Messaging Tab Options */
 div.profile-about {
   display: flex;
-  margin: 1rem;
+  margin: 1rem 0;
 }
 div.profile-about div.profile-desc {
   flex-basis: 70%;

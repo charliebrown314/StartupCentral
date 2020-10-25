@@ -35,3 +35,13 @@ div.tag {
   background-color: $tag-color-dark;
   padding: 1px;
 }
+
+div.tag.light-mode {
+  background-color: $tag-color-light;
+}
+
+#tag-box {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}

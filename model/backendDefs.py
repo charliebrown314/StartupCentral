@@ -25,17 +25,18 @@ class Project:
         self.devlopers = developerList
         self.manager = manager
         self.projectName = project
+        self.currentTags = tags
 
 #this is going to take in the currrent List of addDevList, the set will not allow duplicates so no  checking needed
     def updateAddDevList(self, addDevList):
-        currentDevList = self.developerList
+        currentDevList = self.developers
         for developer in addDevList:
             currentDevList.add(developer)
         return currentDevList
 
 #removes developers in the set to remove from the project set, discrad wil not throw an error if the tag does not exist
     def updateRemoveDevList(self, removeDevList):
-        currentDevList = self.developerList
+        currentDevList = self.developers
         for developer in removeDevList:
             currentDevList.discard(developer)
         return currentDevList

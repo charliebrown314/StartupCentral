@@ -22,7 +22,7 @@ class Project:
         self.active = active
         self.createdDate = created
         self.description = description
-        self.devlopers = developerList
+        self.developers = developerList
         self.manager = manager
         self.projectName = project
         self.currentTags = tags
@@ -60,12 +60,15 @@ class Project:
         return currentStatus
 
 #for now this function will completely the current description.
-    def updateDescription(self):
+    def updateDescription(self, newDescription):
+        currentDescription = self.description
+        currentDescription = newDescription
+        return currentDescription
 
-        return
-
-    def UpdateManager(self):
-        return 0
+    def UpdateManager(self, newManager):
+        currentManager = self.manager
+        currentManager = newManager
+        return currentManager
 
 
 
@@ -114,7 +117,7 @@ class Dev:
     def updateAddProjects(self, addProjectList):
         #this will take in a list of projects and a developer and update the developer
         #need to confirm where the items are held
-        developerProjects = self.currentProjects
+        developerProjects = self.projects
         for project in addProjectList:
             developerProjects.add(project)
         return developerProjects
@@ -122,7 +125,7 @@ class Dev:
     def updateRemoveProjects(self, removeProjectList):
         #this will take in a list of projects and a developer and update the developer
         #need to confirm where the items are held
-        developerProjects = self.currentProjects
+        developerProjects = self.projects
         for project in removeProjectList:
             developerProjects.discard(project)
         return developerProjects

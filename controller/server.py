@@ -10,6 +10,7 @@ Copyright 2020 Jacob Snyderman (jacobsny@buffalo.edu)
 """
 import set_var
 from auth_decorator import login_required, requires_access_level
+import data.samples
 
 from datetime import datetime, timedelta
 from flask import Flask, redirect, url_for, session, request
@@ -134,11 +135,14 @@ class Server:
 
             return json.dumps(self.Projects.proj_recommendations(projName))
 
-        @login_required
-        @self.app.rout("/searchProject", methods=["POST"])
-        def searchProjects():
+        # @login_required
+        # @self.app.rout("/searchProject", methods=["POST"])
+        # def searchProjects():
 
-            request_data = request.get_json()
+        #     request_data = request.get_json()
+
+        #     data = json.dumps(self.Projects.ge)
+
 
         @login_required
         @self.app.route("/getProjNames", methods=["GET", "POST"])
@@ -162,3 +166,5 @@ class Server:
 if __name__ == '__main__':
     server = Server()
     server.start()
+    data.samples.load()
+    

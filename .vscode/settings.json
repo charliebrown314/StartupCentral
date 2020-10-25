@@ -1,0 +1,10 @@
+{
+    "python.pythonPath": "C:\\Program Files\\Python39\\python.exe",
+    "python.autoComplete.extraPaths": [
+        "controller"
+    ],
+    "python.analysis.extraPaths": [
+        "controller"
+    ],
+
+}

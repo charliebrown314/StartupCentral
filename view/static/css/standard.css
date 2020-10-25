@@ -1,0 +1,55 @@
+/* Generic Options */
+/* Tile Options */
+/* Nav Bar Options */
+/* Tag Options */
+/* Project Tab - Search Options */
+/* Messaging Tab Options */
+body {
+  margin: 0;
+  background-color: #282a36;
+  color: #f8f8f2;
+}
+
+body.light-mode {
+  background-color: white;
+  color: black;
+}
+
+#content {
+  width: 70%;
+  height: 100%;
+  margin: 0 auto;
+}
+
+#home-main {
+  height: 27rem;
+}
+
+::-webkit-scrollbar {
+  height: 0.2rem;
+  width: 0.2rem;
+  background-color: inherit;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #525463;
+}
+
+div.tag {
+  margin-right: 0.5rem;
+  border-radius: 10%;
+  background-color: #000000B3;
+  padding: 1px;
+}
+
+div.tag.light-mode {
+  background-color: #FFFFFFB3;
+}
+
+#tag-box {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
+/*# sourceMappingURL=standard.css.map */

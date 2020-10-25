@@ -1,0 +1,109 @@
+/* Generic Options */
+/* Tile Options */
+/* Nav Bar Options */
+/* Tag Options */
+/* Project Tab - Search Options */
+/* Messaging Tab Options */
+div.messaging-window {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+  padding-bottom: 2rem;
+  height: 40rem;
+}
+div.messaging-window div.messaging-contacts div.contacts-header {
+  text-align: center;
+  border: 1px solid #525463;
+  border-right: 0;
+  padding: 1rem 0;
+}
+div.messaging-window div.messaging-contacts div.contact-cards-wrapper {
+  flex-direction: column;
+  overflow: auto;
+  height: 37rem;
+}
+div.messaging-window div.messaging-contacts div.contact-cards-wrapper div.contact-card {
+  display: flex;
+  flex-direction: row;
+  background-color: #469e37;
+  height: 4rem;
+  width: 10rem;
+}
+div.messaging-window div.messaging-contacts div.contact-cards-wrapper div.contact-card div.contact-name {
+  flex-basis: 70%;
+}
+div.messaging-window div.messaging-contacts div.contact-cards-wrapper div.contact-card img {
+  border-radius: 100%;
+  height: 85%;
+  margin: auto 0.5rem;
+}
+div.messaging-window div.messaging-contacts div.contact-cards-wrapper div.contact-card.current {
+  background-color: #007856;
+}
+div.messaging-window div.messaging-contacts div.contact-cards-wrapper div.contact-card:hover {
+  cursor: pointer;
+  background-color: #007856;
+}
+div.messaging-window div.messaging-conversation {
+  height: 100%;
+  width: 50%;
+  border: 1px solid #525463;
+}
+div.messaging-window div.messaging-conversation div.conversation-header {
+  text-align: center;
+  border-bottom: 1px solid #525463;
+  padding: 1rem 0;
+}
+div.messaging-window div.messaging-conversation div.conversation-content {
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+  height: 35rem;
+}
+div.messaging-window div.messaging-conversation div.conversation-content div.message {
+  margin: 1rem 1rem;
+  border-radius: 2rem;
+  padding: 0.5rem;
+}
+div.messaging-window div.messaging-conversation div.conversation-content div.message.sent {
+  background-color: #007856;
+  border-bottom-right-radius: 0;
+  margin-left: auto;
+  max-width: 90%;
+}
+div.messaging-window div.messaging-conversation div.conversation-content div.message.received {
+  background-color: #469e37;
+  border-bottom-left-radius: 0;
+  margin-right: auto;
+  max-width: 90%;
+}
+div.messaging-window div.messaging-conversation div.message-input {
+  display: flex;
+  flex-direction: row-reverse;
+}
+div.messaging-window div.messaging-conversation div.message-input button {
+  background-color: #469e37;
+  border: 0;
+}
+div.messaging-window div.messaging-conversation div.message-input button:hover {
+  background-color: #007856;
+}
+div.messaging-window div.messaging-conversation div.message-input button:hover + input {
+  border-bottom: 2px solid #007856;
+}
+div.messaging-window div.messaging-conversation div.message-input input {
+  background-color: #282a36;
+  border: 0;
+  border-bottom: 2px solid #469e37;
+  caret-color: white;
+  width: 100%;
+  height: 2rem;
+}
+div.messaging-window div.messaging-conversation div.message-input :focus {
+  outline: 0;
+}
+div.messaging-window div.messaging-conversation div.message-input ::placeholder {
+  color: #f8f8f2;
+}
+
+/*# sourceMappingURL=messaging.css.map */

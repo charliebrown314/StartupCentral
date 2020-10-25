@@ -1,0 +1,103 @@
+/* Generic Options */
+/* Tile Options */
+/* Nav Bar Options */
+/* Tag Options */
+/* Project Tab - Search Options */
+/* Messaging Tab Options */
+.single-row {
+  display: flex;
+  overflow: auto;
+}
+
+div.row-tile {
+  background-color: #469e37;
+  height: 8rem;
+  width: 33.3333333333%;
+  margin: 0.5rem 0.5rem;
+  flex-shrink: 0;
+}
+
+div.two-column {
+  display: flex;
+}
+div.two-column > div {
+  width: 50%;
+  flex-direction: column;
+  padding-left: 0.5rem;
+  border-left: 1px solid #525463;
+}
+div.two-column div.col-large {
+  width: 65%;
+}
+div.two-column div.col-small {
+  width: 35%;
+}
+
+div.col-scroll-wrapper {
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+  height: 80%;
+}
+
+div.col-tile {
+  background-color: #469e37;
+  height: 4rem;
+  width: 85%;
+  margin: 0.5rem 0.5rem;
+  flex-shrink: 0;
+  border-radius: 1rem 0 1rem 0;
+  padding-left: 1rem;
+}
+
+div.nameplate {
+  display: flex;
+}
+div.nameplate img {
+  height: 95%;
+  border-radius: 100%;
+  margin-left: auto;
+  margin-right: 1rem;
+}
+div.nameplate div {
+  overflow: hidden;
+}
+div.nameplate div .nameplate-tags {
+  margin-top: 0.5rem;
+  display: flex;
+}
+
+.tile-name {
+  margin-top: 0.5rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.tile-clickable:hover {
+  background-color: #007856;
+  cursor: pointer;
+}
+
+div.recommendation div div.recommendation-desc {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  width: 60%;
+}
+div.recommendation div img {
+  height: 5rem;
+  border-radius: 20%;
+  float: right;
+  position: relative;
+  margin-right: 0.5rem;
+  bottom: 3.6rem;
+}
+
+div.tile-button {
+  background-color: #282a36;
+  width: 50%;
+}
+
+/*# sourceMappingURL=tiles.css.map */

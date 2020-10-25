@@ -1,0 +1,47 @@
+@use 'global_vars' as *;
+
+body {
+  margin: 0;
+  @include global-light-mode($light-mode: false);
+}
+
+body.light-mode {
+  @include global-light-mode($light-mode: true);
+}
+
+#content {
+  width: 70%;
+  height: 100%;
+  margin: 0 auto;
+}
+
+#home-main{
+  height: 27rem;
+}
+
+::-webkit-scrollbar{
+  height: .2rem;
+  width: .2rem;
+  background-color: inherit;
+}
+
+::-webkit-scrollbar-thumb{
+  background-color: $secondary-color-dark;
+}
+
+div.tag {
+  margin-right: .5rem;
+  border-radius: 10%;
+  background-color: $tag-color-dark;
+  padding: 1px;
+}
+
+div.tag.light-mode {
+  background-color: $tag-color-light;
+}
+
+#tag-box {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}

@@ -1,0 +1,104 @@
+@use 'global_vars' as *;
+
+.single-row {
+  display: flex;
+  overflow: auto;
+}
+
+
+div.row-tile {
+  background-color: $tile-color-dark;
+  height: $tile-height;
+  width: $tile-width;
+  margin: .5rem .5rem;
+  flex-shrink: 0;
+}
+
+div.two-column{
+  display: flex;
+  > div {
+    width: 50%;
+    flex-direction: column;
+    padding-left: .5rem;
+    border-left: 1px solid $secondary-color-dark;
+  }
+  div.col-large{
+    width: 65%;
+  }
+  div.col-small{
+    width: 35%;
+  }
+}
+
+div.col-scroll-wrapper {
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+  height: 80%;
+}
+
+div.col-tile {
+  background-color: $tile-color-dark;
+  height: $tile-height / 2;
+  width: 85%;
+  margin: .5rem .5rem;
+  flex-shrink: 0;
+  border-radius: 1rem 0 1rem 0;
+  padding-left: 1rem;
+}
+
+div.nameplate {
+  display: flex;
+  img {
+    height: 95%;
+    border-radius: 100%;
+
+    margin-left: auto;
+    margin-right: 1rem;
+  }
+  div {
+    overflow: hidden;
+    .nameplate-tags {
+      margin-top: .5rem;
+      display: flex;
+    }
+  }
+}
+
+.tile-name {
+  margin-top: .5rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.tile-clickable:hover{
+  background-color: $tile-hover-dark;
+  cursor: pointer;
+}
+
+div.recommendation {
+  div {
+    div.recommendation-desc {
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      width: 60%;
+    }
+    img {
+      height: 5rem;
+      border-radius: 20%;
+      float: right;
+      position: relative;
+      margin-right: .5rem;
+      bottom: 3.6rem;
+    }
+  }
+}
+
+div.tile-button {
+  background-color: #282a36;
+  width: 50%;
+
+}

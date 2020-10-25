@@ -45,7 +45,7 @@ class Database:
 
         auth()
 
-    def getUser(self, email):
+    def getUser(self, email) -> Dev:
         url = self.url + "keyspaces/{keyspace}/tables/{userTable}/rows/{primaryKey}".format(keyspace=self.keyspace,
                                                                                             userTable="Users",
                                                                                             primaryKey=email)
@@ -58,9 +58,12 @@ class Database:
 
         response = requests.request("GET", url, headers=headers)
 
-        print(response.text)
+        dev_obj = json.loads(response.json())["rows"][0]["data"]
+        return Dev(firstName=dev_obj["first_name"], joinDate=dev_obj["join_date"], lasName=dev_obj["last_name"],
+                   developer=dev_obj["email"], tags=dev_obj["tags"], currentProjects=dev_obj["projects"],
+                   lastSession=dev_obj["last_session"])
 
-    def setUser(self, dev_class: Dev):
+    def setUser(self, dev_class: Dev) -> None:
         url = self.url + "keyspaces/{keyspace}/tables/{userTable}/rows/{primaryKey}".format(keyspace=self.keyspace,
                                                                                             userTable="Users",
                                                                                             primaryKey=dev_class.developer)
@@ -80,11 +83,9 @@ class Database:
             "X-Cassandra-Request-Id": uuid.uuid1()
         }
 
-        response = requests.request("PUT", url, json=payload, headers=headers)
+        requests.request("PUT", url, json=payload, headers=headers)
 
-        print(response.text)
-
-    def getProject(self, project):
+    def getProject(self, project) -> Project:
         url = self.url + "keyspaces/{keyspace}/tables/{projectTable}/rows/{primaryKey}".format(keyspace=self.keyspace,
                                                                                                userTable="Projects",
                                                                                                primaryKey=project)
@@ -96,11 +97,14 @@ class Database:
         }
 
         response = requests.request("GET", url, headers=headers)
+        project_obj = json.loads(response.json())["rows"][0]["data"]
+        return Project(project_obj["active"], project_obj["created_date"], project_obj["description"],
+                       project_obj["dev_list"], project_obj["manager"], project_obj["name"], project_obj["tags"])
 
-    def setProject(self, project_class: Project):
+    def setProject(self, project_class: Project) -> None:
         url = self.url + "keyspaces/{keyspace}/tables/{projectTable}/rows/{primaryKey}".format(keyspace=self.keyspace,
                                                                                                userTable="Projects",
-                                                                                              primaryKey=project_class.projectName)
+                                                                                               primaryKey=project_class.projectName)
         payload = {"changeset": [
             {
                 "value": {"active": project_class.active, "created_date": project_class.createdDate,
@@ -116,4 +120,4 @@ class Database:
             "X-Cassandra-Request-Id": uuid.uuid1()
         }
 
-        response = requests.request("PUT", url, json=payload, headers=headers)
+        requests.request("PUT", url, json=payload, headers=headers)

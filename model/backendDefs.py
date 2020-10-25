@@ -17,8 +17,7 @@ class Project:
 #project is the name of the current project == name
 #tags is the set of current tags == tags
 
-    def __init__(self, projectList,active, created, description, developerList, manager, project, tags):
-        self.projectList = projectList
+    def __init__(self,active, created, description, developerList, manager, project, tags):
         self.active = active
         self.createdDate = created
         self.description = description
@@ -85,8 +84,7 @@ class Dev:
 #join_date == joinDate
 
 
-    def __init__(self, developerlist, firstName, joinDate, lasName, developer, tags, currentProjects, lastSession):
-        self.developerList = developerlist
+    def __init__(self, firstName, joinDate, lasName, developer, tags, currentProjects, lastSession):
         self.firstname = firstName
         self.joinDate = joinDate
         self.lastName = lasName
@@ -94,11 +92,6 @@ class Dev:
         self.tags = tags
         self.projects = currentProjects
         self.lastSession = lastSession
-        self.developerList = developerlist  #this is the list of all developers does this need to be removed?
-
-    def getDevList(self):
-        devs = self.developerList
-        return None
 
     def updateTagAdd(self, addlist):
         #taglist may have to have element from dev

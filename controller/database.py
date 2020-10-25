@@ -1,6 +1,7 @@
 import requests
 import json
 import uuid
+from typing import List
 
 from model.backendDefs import Dev, Project
 
@@ -53,41 +54,61 @@ class Database:
         headers = {
             "Accept": "application/json",
             "X-Cassandra-Token": self.token,
-            "X-Cassandra-Request-Id": uuid.uuid1()
+            "X-Cassandra-Request-Id": str(uuid.uuid1())
         }
 
         response = requests.request("GET", url, headers=headers)
 
-        dev_obj = json.loads(response.json())["rows"][0]["data"]
+        dev_obj = json.loads(response.text)["rows"][0]["data"]
         return Dev(firstName=dev_obj["first_name"], joinDate=dev_obj["join_date"], lasName=dev_obj["last_name"],
                    developer=dev_obj["email"], tags=dev_obj["tags"], currentProjects=dev_obj["projects"],
                    lastSession=dev_obj["last_session"])
 
     def setUser(self, dev_class: Dev) -> None:
-        url = self.url + "keyspaces/{keyspace}/tables/{userTable}/rows/{primaryKey}".format(keyspace=self.keyspace,
-                                                                                            userTable="Users",
-                                                                                            primaryKey=dev_class.developer)
-        payload = {"changeset": [
+        url = self.url + "keyspaces/{keyspace}/tables/{userTable}/rows".format(keyspace=self.keyspace,
+                                                                               userTable="Users")
+        payload = {"columns": [
             {
-                "value": {"email": dev_class.developer, "first_name": dev_class.firstname,
-                          "join_date": dev_class.joinDate,
-                          "last_name": dev_class.lastName, "last_session": dev_class.lastSession,
-                          "projects": set(dev_class.projects), "tags": set(dev_class.tags)},
-                "column": "data"
+                "name": "tags",
+                "value": dev_class.tags
+            },
+            {
+                "name": "projects",
+                "value": dev_class.projects
+            },
+            {
+                "name": "last_session",
+                "value": dev_class.lastSession
+            },
+            {
+                "name": "join_date",
+                "value": dev_class.joinDate
+            },
+            {
+                "name": "last_name",
+                "value": dev_class.lastName
+            },
+            {
+                "name": "first_name",
+                "value": dev_class.firstname
+            },
+            {
+                "name": "name",
+                "value": dev_class.developer
             }
         ]}
 
         headers = {
             "Accept": "application/json",
             "X-Cassandra-Token": self.token,
-            "X-Cassandra-Request-Id": uuid.uuid1()
+            "X-Cassandra-Request-Id": str(uuid.uuid1())
         }
 
-        requests.request("PUT", url, json=payload, headers=headers)
+        requests.request("POST", url, json=payload, headers=headers)
 
     def getProject(self, project) -> Project:
         url = self.url + "keyspaces/{keyspace}/tables/{projectTable}/rows/{primaryKey}".format(keyspace=self.keyspace,
-                                                                                               userTable="Projects",
+                                                                                               projectTable="Projects",
                                                                                                primaryKey=project)
 
         headers = {
@@ -97,27 +118,61 @@ class Database:
         }
 
         response = requests.request("GET", url, headers=headers)
-        project_obj = json.loads(response.json())["rows"][0]["data"]
+        project_obj = json.loads(response.text)["rows"][0]["data"]
         return Project(project_obj["active"], project_obj["created_date"], project_obj["description"],
                        project_obj["dev_list"], project_obj["manager"], project_obj["name"], project_obj["tags"])
 
     def setProject(self, project_class: Project) -> None:
-        url = self.url + "keyspaces/{keyspace}/tables/{projectTable}/rows/{primaryKey}".format(keyspace=self.keyspace,
-                                                                                               userTable="Projects",
-                                                                                               primaryKey=project_class.projectName)
-        payload = {"changeset": [
+        url = self.url + "keyspaces/{keyspace}/tables/{projectTable}/rows".format(keyspace=self.keyspace,
+                                                                                  projectTable="Projects")
+        payload = {"columns": [
             {
-                "value": {"active": project_class.active, "created_date": project_class.createdDate,
-                          "description": project_class.description,
-                          "dev_list": project_class.developers, "manager": project_class.manager,
-                          "name": set(project_class.projectName), "tags": set(project_class.currentTags)},
-                "column": "data"
+                "name": "tags",
+                "value": project_class.projectName
+            },
+            {
+                "name": "manager",
+                "value": project_class.projectName
+            },
+            {
+                "name": "dev_list",
+                "value": project_class.projectName
+            },
+            {
+                "name": "description",
+                "value": project_class.projectName
+            },
+            {
+                "name": "created_date",
+                "value": project_class.projectName
+            },
+            {
+                "name": "active",
+                "value": project_class.active
+            },
+            {
+                "name": "name",
+                "value": project_class.projectName
             }
         ]}
         headers = {
             "Accept": "application/json",
             "X-Cassandra-Token": self.token,
-            "X-Cassandra-Request-Id": uuid.uuid1()
+            "X-Cassandra-Request-Id": str(uuid.uuid1())
         }
 
-        requests.request("PUT", url, json=payload, headers=headers)
+        requests.request("POST", url, json=payload, headers=headers)
+
+    def getProjectNames(self) -> List[str]:
+        url = self.url + "keyspaces/{keyspace}/tables/{projectTable}/rows".format(
+            keyspace=self.keyspace,
+            projectTable="Projects")
+
+        headers = {
+            "Accept": "application/json",
+            "X-Cassandra-Token": self.token,
+            "X-Cassandra-Request-Id": str(uuid.uuid1())
+        }
+
+        response = requests.request("GET", url, headers=headers)
+        return [i["name"] for i in json.loads(response.text)["rows"]]

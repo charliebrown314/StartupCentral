@@ -17,18 +17,26 @@ class Project:
 #project is the name of the current project == name
 #tags is the set of current tags == tags
 
-    def __init__(self,active, created, description, developerList, manager, project, tags):
+    active : bool
+    createdDate : time
+    description : str
+    developerList : list
+    manager : str
+    project : str
+    tags : list
+
+    def __init__(self ,active : bool, created : time, description : str, developerList : list, manager : str, projects: str, tags : list):
         self.active = active
         self.createdDate = created
         self.description = description
         self.developers = developerList
         self.manager = manager
-        self.projectName = project
+        self.projectName = projects
         self.currentTags = tags
 
 #this is going to take in the currrent List of addDevList, the set will not allow duplicates so no  checking needed
     def updateAddDevList(self, addDevList):
-        currentDevList = self.developers
+        currentDevList = self.developerss
         for developer in addDevList:
             currentDevList.add(developer)
         return currentDevList

@@ -1,0 +1,31 @@
+/* Generic Options */
+/* Tile Options */
+/* Nav Bar Options */
+/* Tag Options */
+/* Project Tab - Search Options */
+/* Messaging Tab Options */
+div.profile-about {
+  display: flex;
+  margin: 1rem;
+}
+div.profile-about div.profile-desc {
+  flex-basis: 70%;
+}
+div.profile-about img {
+  border-radius: 100%;
+  border: 2px solid #525463;
+  height: 9rem;
+}
+
+div.profile-data > div {
+  display: flex;
+  flex-wrap: wrap;
+}
+div.profile-data > div h2 {
+  flex-basis: 100%;
+}
+div.profile-data > div div.row-tile {
+  width: 30%;
+}
+
+/*# sourceMappingURL=profile.css.map */

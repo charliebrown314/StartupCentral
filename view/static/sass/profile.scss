@@ -1,0 +1,27 @@
+@use 'global_vars' as *;
+
+div.profile-about {
+  display: flex;
+  margin: 1rem;
+  div.profile-desc {
+    flex-basis: 70%;
+  }
+  img {
+    border-radius: 100%;
+    border: 2px solid $secondary-color-dark;
+    height: 9rem;
+  }
+}
+
+div.profile-data{
+  > div{
+    display: flex;
+    flex-wrap: wrap;
+    h2 {
+      flex-basis: 100%;
+    }
+    div.row-tile {
+      width: 30%;
+    }
+  }
+}

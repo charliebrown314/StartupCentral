@@ -2,6 +2,8 @@
 /* Scroll Bar Options */
 /* Tile Options */
 /* Nav Bar Options */
+/* Tag Options */
+/* Project Tab - Search Options */
 body {
   margin: 0;
   background-color: #282a36;
@@ -19,6 +21,10 @@ body.light-mode {
   margin: 0 auto;
 }
 
+#home-main {
+  height: 27rem;
+}
+
 ::-webkit-scrollbar {
   height: 0.2rem;
   width: 0.2rem;
@@ -26,7 +32,14 @@ body.light-mode {
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: white;
+  background-color: #525463;
+}
+
+div.tag {
+  margin-right: 0.5rem;
+  border-radius: 10%;
+  background-color: #000000B3;
+  padding: 1px;
 }
 
 /*# sourceMappingURL=standard.css.map */

@@ -1,7 +1,7 @@
 /* Background Options */
 $background-color-dark: #282a36; // Dracula Dark BG
 $text-color-dark: #f8f8f2;
-$border-color-dark: #f8f8f2;
+$border-color-dark: #525463;
 
 $background-color-light: white;
 $text-color-light: black;
@@ -18,7 +18,7 @@ $text-color-light: black;
 }
 
 /* Scroll Bar Options */
-$scroll-bar-dark: white;
+$scroll-bar-dark: #525463;
 
 $scroll-bar-light: black;
 
@@ -26,12 +26,27 @@ $scroll-bar-light: black;
 $tile-height: 8rem;
 $tile-width: 100% / 3;
 
+$tile-color-dark: #469e37;
+$tile-hover-dark: #007856;
+
+$tile-color-light: lightgreen;
+
 /* Nav Bar Options */
 
-$nav-color-dark: darkgreen;
-$nav-hover-color-dark: #025302;
+$nav-color-dark: #469e37;
+$nav-hover-color-dark: #007856;
 $button-border-color-dark: white;
 
 $nav-color-light: lightgreen;
 $nav-hover-color-light: darkgreen;
 $button-border-color-light: black;
+
+/* Tag Options */
+$tag-color-dark: #000000B3;
+$tag-hover-dark: #000000;
+
+$tag-color-light: #000000B3;
+$tag-hover-light: #000000;
+
+/* Project Tab - Search Options */
+$search-bg-color-dark: darkgreen;

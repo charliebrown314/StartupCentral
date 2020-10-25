@@ -27,6 +27,10 @@
     text-decoration: none;
     color: #f8f8f2;
   }
+  a.nav-selected {
+    background-color: inherit;
+    height: 110%;
+  }
   a:hover {
     @if $light-mode {
       background-color: $nav-hover-color-light;
@@ -35,22 +39,14 @@
       background-color: $nav-hover-color-dark;
     }
   }
-  a.nav-selected {
-    background-color: inherit;
-    height: 110%;
-  }
   #nav-home {
-
+    margin-right: auto;
     @if $light-mode {
       border-left: 1px solid $button-border-color-light;
     }
     @else {
       border-right: 1px solid $button-border-color-dark;
     }
-
-  }
-  input {
-    margin-right: auto;
   }
 }
 

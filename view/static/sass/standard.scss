@@ -15,6 +15,10 @@ body.light-mode {
   margin: 0 auto;
 }
 
+#home-main{
+  height: 27rem;
+}
+
 ::-webkit-scrollbar{
   height: .2rem;
   width: .2rem;
@@ -23,4 +27,11 @@ body.light-mode {
 
 ::-webkit-scrollbar-thumb{
   background-color: $scroll-bar-dark;
+}
+
+div.tag {
+  margin-right: .5rem;
+  border-radius: 10%;
+  background-color: $tag-color-dark;
+  padding: 1px;
 }

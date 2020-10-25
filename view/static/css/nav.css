@@ -2,9 +2,11 @@
 /* Scroll Bar Options */
 /* Tile Options */
 /* Nav Bar Options */
+/* Tag Options */
+/* Project Tab - Search Options */
 /* Dark Mode Standard */
 nav {
-  background-color: darkgreen;
+  background-color: #469e37;
   display: flex;
   justify-content: flex-end;
   width: 100%;
@@ -19,18 +21,16 @@ nav a {
   text-decoration: none;
   color: #f8f8f2;
 }
-nav a:hover {
-  background-color: #025302;
-}
 nav a.nav-selected {
   background-color: inherit;
   height: 110%;
 }
-nav #nav-home {
-  border-right: 1px solid white;
+nav a:hover {
+  background-color: #007856;
 }
-nav input {
+nav #nav-home {
   margin-right: auto;
+  border-right: 1px solid white;
 }
 
 nav.light-mode {
@@ -49,18 +49,16 @@ nav.light-mode a {
   text-decoration: none;
   color: #f8f8f2;
 }
-nav.light-mode a:hover {
-  background-color: darkgreen;
-}
 nav.light-mode a.nav-selected {
   background-color: inherit;
   height: 110%;
 }
-nav.light-mode #nav-home {
-  border-left: 1px solid black;
+nav.light-mode a:hover {
+  background-color: darkgreen;
 }
-nav.light-mode input {
+nav.light-mode #nav-home {
   margin-right: auto;
+  border-left: 1px solid black;
 }
 
 /*# sourceMappingURL=nav.css.map */

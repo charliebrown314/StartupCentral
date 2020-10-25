@@ -15,7 +15,7 @@ function newRecommendationTile(name, desc_txt, img_URL){
         post('/getProject',[{'projectName' : name}], true, json => {
             let result = JSON.parse(json)
             currProject = {'name': result['project'], 'tags': result['tags'], 'collabs' : result['developerList'], 'desc': result['description']}
-            window.location.href = "/home"
+            window.location.href = "/"
         })
     }
     return tile;

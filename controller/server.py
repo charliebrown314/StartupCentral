@@ -13,7 +13,7 @@ from controller.auth_decorator import login_required, requires_access_level
 import data.samples
 
 from datetime import datetime, timedelta
-from flask import Flask, redirect, url_for, session, request
+from flask import Flask, redirect, url_for, session, request, render_template
 from authlib.integrations.flask_client import OAuth
 import json
 import os
@@ -25,7 +25,7 @@ class Server:
     
     def __init__(self):
         controller.set_var.main()
-        self.app = Flask(__name__,static_folder="../view/static")
+        self.app = Flask(__name__,static_folder="../view/static", template_folder="../view/templates")
         self.app.secret_key = os.getenv("APP_SECRET_KEY")
         self.app.config['SESSION_COOKIE_NAME'] = 'google-login-session'
         self.app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(hours=24)
@@ -49,14 +49,20 @@ class Server:
 
         @self.app.route('/')
         def hello_world():
-            # This is where the normal homepage is
-            # It should have a login button that turns to a logout button when logged in
-            # It should display what email they are logged in as when they are logged in
-            try:
-                email = dict(session)['profile']['email']
-            except:
-                email = "no one yet"
-            return f'Hello, you are logged in as {email}!'
+            return render_template("homepage.html")
+
+        @self.app.route('/messaging')
+        def message_world():
+            return render_template("messaging.html")
+
+        @self.app.route('/profile')
+        def profile_world():
+            return render_template("profile.html")
+
+        @self.app.route('/projects')
+        def projects_world():
+            return render_template("projects.html")
+
 
         @self.app.route('/<path:path>')
         def static_proxy(path):

@@ -1,0 +1,110 @@
+@use 'global_vars' as *;
+
+div.messaging-window {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+  padding-bottom: 2rem;
+  height: $message-window-size;
+  div.messaging-contacts{
+    div.contacts-header {
+      text-align: center;
+      border: 1px solid $secondary-color-dark;
+      border-right: 0;
+      padding: 1rem 0;
+    }
+    div.contact-cards-wrapper {
+      flex-direction: column;
+      overflow: auto;
+      height: $message-window-size - 3rem;
+      div.contact-card {
+        display: flex;
+        flex-direction: row;
+        background-color: $tile-color-dark;
+        height: $tile-height / 2;
+        width: 10rem;
+
+        div.contact-name {
+          flex-basis: 70%;
+        }
+
+        img {
+          border-radius: 100%;
+          height: 85%;
+          margin: auto 0.5rem;
+        }
+      }
+
+      div.contact-card.current {
+        background-color: $tile-hover-dark;
+      }
+
+      div.contact-card:hover {
+        cursor: pointer;
+        background-color: $tile-hover-dark;
+      }
+    }
+  }
+  div.messaging-conversation{
+    height: 100%;
+    width: 50%;
+    border: 1px solid $secondary-color-dark;
+    div.conversation-header {
+      text-align: center;
+      border-bottom: 1px solid $secondary-color-dark;
+      padding: 1rem 0;
+    }
+    div.conversation-content {
+      display: flex;
+      flex-direction: column;
+      overflow: auto;
+      height: $message-window-size - 5rem;
+      div.message {
+        margin: 1rem 1rem;
+        border-radius: 2rem;
+        padding: .5rem;
+      }
+      div.message.sent {
+        background-color: $tile-hover-dark;
+        border-bottom-right-radius: 0;
+        margin-left: auto;
+        max-width: 90%;
+      }
+      div.message.received {
+        background-color: $tile-color-dark;
+        border-bottom-left-radius: 0;
+        margin-right: auto;
+        max-width: 90%;
+      }
+    }
+    div.message-input {
+      display: flex;
+      flex-direction: row-reverse;
+      button {
+        background-color: $tile-color-dark;
+        border: 0;
+
+      }
+      button:hover{
+        background-color: $tile-hover-dark;
+      }
+      button:hover + input {
+        border-bottom: 2px solid $tile-hover-dark;
+      }
+      input {
+        background-color: $background-color-dark;
+        border: 0;
+        border-bottom: 2px solid $tile-color-dark;
+        caret-color: $caret-color-dark;
+        width: 100%;
+        height: 2rem;
+      }
+      :focus {
+        outline: 0;
+      }
+      ::placeholder{
+        color: $text-color-dark;
+      }
+    }
+  }
+}

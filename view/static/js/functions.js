@@ -61,14 +61,14 @@ function getCurrProject(){
 }
 
 function getRecommendedProjects(projName){
-  post('/getProjRecommendations', [{'projName' : projName}], true, json => {
+  get('/getProjRecommendations?projectName=' + name, json => {
     console.log(json)
   })
   return [{'name': 'Synplicity', 'desc': 'An AR Syntax Checking Tool', 'tags': ['#Python', '#C'], 'collabs': ['Bobby DropTables', 'Jacob Snyderman', 'John Tantillo'], 'img_URL': "../static/assets/oop.jpg"}]
 }
 
 function getUserData(name){
-  post('/getProfile', [{'userID': name}], true, json => {
+  get('/getProfile?userID=' + name, json => {
     let result = JSON.parse(json)
     console.log(json)
     return {}
@@ -102,7 +102,7 @@ function search(search_string){
     }
   }
   else{
-    post('/getProjNames',null,false, search => {
+    get('/getProjNames',search => {
       for (project of search){
         results.appendChild(newSearchResult(project['name'],project['desc'],project['tags'],project['collabs'],projectURL))
       }

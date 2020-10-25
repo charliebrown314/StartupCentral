@@ -12,10 +12,10 @@ function newRecommendationTile(name, desc_txt, img_URL){
     img.src = img_URL;
     tile.append(tile_name,hr,desc,img)
     tile.onclick = _ => {
-        post('/getProject',[{'projectName' : name}], true, json => {
+        get('/getProject?projectName=' + name, json => {
             let result = JSON.parse(json)
             currProject = {'name': result['project'], 'tags': result['tags'], 'collabs' : result['developerList'], 'desc': result['description']}
-            window.location.href = "/home"
+            window.location.href = "/"
         })
     }
     return tile;

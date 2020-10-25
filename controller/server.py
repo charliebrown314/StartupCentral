@@ -104,22 +104,13 @@ class Server:
             return redirect('/')
 
         @login_required
-        @self.app.route("/getProfile", methods=["POST"])
-        def getProfile():
-
-            request_data = request.get_json()
-
-            userID = request_data["userID"]
-
+        @self.app.route("/getProfile/<userID>")
+        def getProfile(userID):
             return json.dumps(self.Projects.DB.getUser(userID))
 
         @login_required
-        @self.app.route("/getProject", methods=["POST"])
-        def getProject():
-
-            request_data = request.get_json()
-            projectName = request_data["projectName"]
-
+        @self.app.route("/getProject/<projectName>")
+        def getProject(projectName):
             return json.dumps(self.Projects.DB.getProject(projectName))
 
         @login_required
@@ -131,22 +122,9 @@ class Server:
             return json.dumps(self.Projects.DB.getDevRecommendations(tags))
 
         @login_required
-        @self.app.route("/getProjRecommendations", methods=["POST"])
-        def getProjRecommendations():
-
-            request_data = request.get_json()
-
-            projName = request_data["projName"]
-
+        @self.app.route("/getProjRecommendations/<projName>")
+        def getProjRecommendations(projName):
             return json.dumps(self.Projects.proj_recommendations(projName))
-
-        # @login_required
-        # @self.app.rout("/searchProject", methods=["POST"])
-        # def searchProjects():
-
-        #     request_data = request.get_json()
-
-            request_data = request.get_json()
 
         @login_required
         @self.app.route("/getProjNames", methods=["GET", "POST"])

@@ -17,7 +17,7 @@ class Project:
 #project is the name of the current project == name
 #tags is the set of current tags == tags
 
-    def __init__(self, projectList ,active, created, description, developerList, manager, project, tags):
+    def __init__(self, projectList,active, created, description, developerList, manager, project, tags):
         self.projectList = projectList
         self.active = active
         self.createdDate = created

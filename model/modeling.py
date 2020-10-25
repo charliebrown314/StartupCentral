@@ -36,3 +36,22 @@ class Model:
         sor = list(enumerate(self.cosign_sim[idx]))
         sor = sorted(sor, key=lambda x: x[1], reverse=True)[1:]
         return [self.idx_to_name[i[0]] for i in sor[:50]]
+
+    def dev_recommendation(self, tag_list, dev_table):
+        # dev table row expected format is [dev email, dev fname, dev lname, tag1, tag2, ...]
+        arr = []
+        id_to_dev = {}
+        for dev in dev_table:
+            id_to_dev[len(id_to_dev)] = dev[0]
+            r = [dev[0]]+[0]*len(self.tag_id)
+            for tag in dev[3:]:
+                r[tag+1] = 1
+            arr.append(r)
+        r = [len(id_to_dev)] + [0] * len(self.tag_id)
+        for tag in tag_list:
+            r[tag + 1] = 1
+        arr.append(r)
+        arr = cosine_similarity(arr)
+        arr = list(enumerate(arr[len(id_to_dev)]))
+        arr = sorted(arr, key=lambda x: x[1], reverse=True)[1:]
+        return [id_to_dev[i] for i in arr]

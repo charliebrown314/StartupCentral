@@ -56,7 +56,7 @@ function getCurrProject(){
 }
 
 function getRecommendedProjects(){
-  return [{'name': 'Synplicity', 'desc': 'An AR Syntax Checking Tool', 'img_URL': "../static/assets/oop.jpg"}]
+  return [{'name': 'Synplicity', 'desc': 'An AR Syntax Checking Tool', 'tags': ['#Python', '#C'], 'collabs': ['Jacob Snydeman', 'John Tantillo'], 'img_URL': "../static/assets/oop.jpg"}]
 }
 
 function getCollaborators(projectName){
@@ -82,10 +82,17 @@ function setUp_homePage(){
 }
 
 function search(search_string){
+  let results = document.getElementById('search-results')
   if(search_string == ''){
-
+    for (project of getRecommendedProjects()){
+      results.appendChild(newSearchResult(project['name'],project['desc'],project['tags'],project['collabs'],project['img_URL']))
+    }
   }
   else{
-
+    post('/getProjNames',null,false, search => {
+      for (project of search){
+        results.appendChild(newSearchResult(project['name'],project['desc'],project['tags'],project['collabs'],project['img_URL']))
+      }
+    })
   }
 }

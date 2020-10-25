@@ -64,7 +64,7 @@ function newSearchResult(name, desc, tags, collabs, img_URL){
     img_wrap.className = 'search-img-wrapper'
     img.src = img_URL
     wrapper.append(r_desc,tag_container,col_header,col_container)
-    img_wrap.appendChild(img_wrap)
+    img_wrap.appendChild(img)
     result.append(r_name,wrapper,img_wrap)
     return result
 }
